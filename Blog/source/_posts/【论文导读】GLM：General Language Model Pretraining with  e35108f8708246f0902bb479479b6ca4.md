@@ -6,10 +6,6 @@ excerpt: 对论文*GLM：General Language Model Pretraining with Autoregressive 
 
 ---
 
-# 【论文导读】GLM：General Language Model Pretraining with Autoregressive Blank Infilling
-
-# NLP的主流架构
-
 ### 自回归模型（GPT）：
 
 - 特点：自回归模型通过从左到右逐个生成文本的方式，具有较强的生成能力，能够生成长文本。在训练过程中，可以利用上下文信息进行预测，从而捕捉到一定的语义关联。
