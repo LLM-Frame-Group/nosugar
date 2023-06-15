@@ -2,14 +2,16 @@
 title: LLM论文阅读-第二周
 date: 2023-06-13 8:39:58
 tags: 论文阅读
+mathjax: true
 excerpt: 整理了LLM微调的技术发展，着重关注了PEFT的基本原理，对LoRA整体结构和相关基础进行了详细叙述，并通过一个实际项目展示模型训练的全过程。
+
 ---
 
 
 
 # Fine Tuning
 
-![Untitled](LLM论文阅读-第二周/Untitled.png)
+![Finetune描述](Untitled.png)
 
 默认情况下对模型所有参数进行调整
 
@@ -46,7 +48,7 @@ excerpt: 整理了LLM微调的技术发展，着重关注了PEFT的基本原理�
 
 每个任务唯一对应一套prefix，不支持多任务。
 
-![Untitled](LLM论文阅读-第二周/Untitled%201.png)
+![Prefix-tuning结构](1.png)
 
 
 
@@ -57,27 +59,29 @@ excerpt: 整理了LLM微调的技术发展，着重关注了PEFT的基本原理�
 ### 实现
 
 1. "Span Corruption”：基于T5的预训练模型进行实现，T5的预训练进行句子空缺内容的预测，使用Span标注空缺位置，下面举个例子。
-    - 输入：Thank you 〈X〉 me to your party 〈Y〉 week
-    - 输出：〈X〉 for inviting 〈Y〉 last 〈Z〉
-    
-    其中输入中类似〈X〉的哨兵标注了空缺，输出表示对输入内容的填补，同样使用哨兵作为输出结尾
-    
+
+   - 输入：Thank you 〈X〉 me to your party 〈Y〉 week
+   - 输出：〈X〉 for inviting 〈Y〉 last 〈Z〉
+
+   其中输入中类似〈X〉的哨兵标注了空缺，输出表示对输入内容的填补，同样使用哨兵作为输出结尾
+
 2. ”Span Corruption + Sentinel“：prompt tuning为了接近输入在预训练中的状态，微调时，向所有下游任务头部插入一个哨兵
+
 3. “LM Adaptation”：延续T5进行少量额外的自监督训练，但以“LM”为目标（即Transformer中的解码器，基于上文预测下一个出现的token）。
-   
-    作者希望通过LM Adaptation，把模型速转换成一个更类似GPT-3的模型。
-    
-    由于这种方法与从头开始预训练的效果从未被比较过，文中尝试了不同Step下的Adaptation效果。
+
+   作者希望通过LM Adaptation，把模型速转换成一个更类似GPT-3的模型。
+
+   由于这种方法与从头开始预训练的效果从未被比较过，文中尝试了不同Step下的Adaptation效果。
 
 
 
 ### 实验效果
 
-![Untitled](LLM论文阅读-第二周/Untitled%202.png)
+![Prompt Tuning效果对比](2.png)
 
-![Untitled](LLM论文阅读-第二周/Untitled%203.png)
+![Prompt Tuning参数对比](3.png)
 
-![Untitled](LLM论文阅读-第二周/Untitled%204.png)
+![Prompt Tuning benchmark表现](4.png)
 
 
 
@@ -110,7 +114,7 @@ excerpt: 整理了LLM微调的技术发展，着重关注了PEFT的基本原理�
 
 **模型权重的更新矩阵有一个低秩**
 
-![Untitled](LLM论文阅读-第二周/Untitled%205.png)
+![LoRA](5.png)
 
 
 
@@ -161,7 +165,7 @@ $$
 - MRPC：包含约3700个训练样本的段落文本语义一致性预测任务
 - QQP：包含约363k个训练样本的问题文本语义一致性预测任务
 
-![Untitled](LLM论文阅读-第二周/Untitled%206.png)
+![本征维度计算结果](6.png)
 
 
 
@@ -170,13 +174,13 @@ $$
 - 预训练模型效果越好，本征维度越小
 - 训练集规模越大，本征维度越大
 
-![Untitled](LLM论文阅读-第二周/Untitled%207.png)
+![本征维度-模型规模](7.png)
 
 
 
 ## 重新理解LoRA
 
-![Untitled](LLM论文阅读-第二周/Untitled%208.png)
+![LoRA结构](8.png)
 
 现有预训练权重矩阵 $W_0\in\mathbb{R}^{d\times k}$ ，将权重更新表示为
 
@@ -202,9 +206,9 @@ $$
 
 ## 实验效果
 
-![Untitled](LLM论文阅读-第二周/Untitled%209.png)
+![RoBERT对比](9.png)
 
-![Untitled](LLM论文阅读-第二周/Untitled%2010.png)
+![GPT-3对比](10.png)
 
 
 
