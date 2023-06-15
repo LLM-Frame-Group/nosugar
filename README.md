@@ -4,6 +4,8 @@
 
 # 环境配置
 
+## 安装nodejs
+
 1. 安装nodejs
 
    安装项目中提供的`node-v18.16.0-x64.msi`文件
@@ -17,6 +19,14 @@
    ```
    npm install -g hexo-cli 
    ```
+
+## 第一次部署
+
+如果首次clone仓库，需要安装相关module
+
+```
+npm install --force
+```
 
 
 
@@ -33,6 +43,8 @@ hexo n "你的文章名"
 ```
 
 当然，也可以把现有的md放到`\Blog\source\_posts`，再手动建一个同名assets文件夹，效果是一样的。
+
+**注意，非hexo创建的md文档需要在头部插入一段header（从其他文档里复制一个）确保正确渲染**
 
 ## 编辑
 
