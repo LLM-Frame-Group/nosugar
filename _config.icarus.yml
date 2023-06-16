@@ -223,15 +223,15 @@ sidebar:
 # Sidebar widget configurations
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
 widgets:
-    # Profile widget configurations
+    # 个人简介
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left
         type: profile
         # Author name
-        author: 无糖LLM框架组
+        author: 无糖-SCU LLM框架组
         # Author title
-        author_title: Your title
+        author_title: 学安全不如赛博炼丹
         # Author's current location
         location: 中国 成都
         # URL or path to the avatar image
@@ -259,15 +259,16 @@ widgets:
         #     RSS:
         #         icon: fas fa-rss
         #         url: /
-    # Table of contents widget configurations
+
+    # 目录配置
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: toc
         # Whether to show the index of each heading
         index: true
         # Whether to collapse sub-headings when they are out-of-view
-        collapsed: true
+        collapsed: false
         # Maximum level of headings to show (1-6)
         depth: 3
     # Recommendation links widget configurations

@@ -60,6 +60,7 @@ date: y-m-d hh:mm:ss
 tags: 标签（可以通过[tag1,tag2,...]的形式添加多个标签）
 excerpt: 文章摘要（不写会放全文）
 mathjax: true
+toc: true
 author: 作者名称
 ```
 
@@ -91,6 +92,8 @@ subtitle:副标题
 
 ## 渲染
 
+（本过程用于确认内容是否正常添加和渲染，如果你很自信，也可以直接push）
+
 更新文件
 
 ```
@@ -118,4 +121,4 @@ git commit -m "update info"
 git push
 ```
 
-仓库会自动把内容更新到博客仓库，过程会有一定延迟，可以在nosuar仓库的action界面查看进度
+仓库会自动把内容更新到博客仓库，过程会有一定延迟，可以在nosuar仓库的Action界面查看进度
