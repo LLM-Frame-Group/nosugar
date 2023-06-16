@@ -11,9 +11,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     
-    - name: Enter
-      run: cd Blog
-    
     - name: Build and Deploy
       uses: theme-keep/hexo-deploy-github-pages-action@master
       env:
