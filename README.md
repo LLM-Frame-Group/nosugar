@@ -8,7 +8,7 @@
 
 1. 安装nodejs
 
-   安装项目中提供的`node-v18.16.0-x64.msi`文件
+   如果没有安装nodejs，请自行[安装](https://nodejs.org/en/download)
 
    使用`node --version`验证安装效果
 
@@ -32,8 +32,6 @@ npm install
 
 # 上传博客
 
-下面所有操作在Blog文件夹下进行
-
 ## 新建
 
 可以使用命令新建一个新markdown文档
@@ -48,7 +46,7 @@ hexo n "你的文章名"
 
 ## 编辑
 
-在 `\Blog\source\_posts`中可以找到刚刚新建的md文件，以及一个同名的assets文件夹
+在 `\source\_posts`中可以找到刚刚新建的md文件，以及一个同名的assets文件夹
 
 ### 文章简介
 
