@@ -22,4 +22,4 @@ jobs:
         # The branch the action should deploy to.
         BRANCH: main
         
-        PUBLISH_DIR: Blog
+        PUBLISH_DIR: ./Blog
