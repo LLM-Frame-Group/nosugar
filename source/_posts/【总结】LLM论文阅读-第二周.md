@@ -4,7 +4,7 @@ date: 2023-06-13 8:39:58
 tags: 论文阅读
 mathjax: true
 excerpt: 整理了LLM微调的技术发展，着重关注了PEFT的基本原理，对LoRA整体结构和相关基础进行了详细叙述，并通过一个实际项目展示模型训练的全过程。
-
+author: Azyka,洛洛洛
 ---
 
 

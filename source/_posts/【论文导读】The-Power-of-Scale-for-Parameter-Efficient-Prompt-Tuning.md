@@ -4,6 +4,7 @@ date: 2023-06-16 10:12:42
 tags: 论文阅读
 mathjax: true
 excerpt: 简单介绍了soft prompt的概念，并解读了Prompt Tuning的设计方法
+author: Azyka
 ---
 
 # 介绍
