@@ -1,10 +1,17 @@
 ---
 title: 【论文导读】GLM：General Language Model Pretraining with Autoregressive Blank Infilling
-date: 2023-06-15 14:00:00
+date: 2023-06-13 8:39:58
 tags: 论文阅读
-excerpt: 对论文*GLM：General Language Model Pretraining with Autoregressive Blank Infilling*的详细导读
+mathjax: true
+author: 洛洛洛
+excerpt: 对论文*GLM：General Language Model Pretraining with Autoregressive Blank Infilling*的详细解读
+
 
 ---
+
+
+
+# NLP的主流架构
 
 ### 自回归模型（GPT）：
 
@@ -64,7 +71,7 @@ excerpt: 对论文*GLM：General Language Model Pretraining with Autoregressive 
 > 自回归空白填充通过对输入文本中的一些连续片段进行随机掩码处理，然后以自回归的方式预测被掩码的部分
 > 
 
-![截屏2023-06-15 上午10.59.27.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258A%25E5%258D%258810.59.27.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 上午10.59.27.png)
 
 `注释：[M] := [掩码]，[S] := [开始]，[E] := [结束]`
 
@@ -113,11 +120,11 @@ excerpt: 对论文*GLM：General Language Model Pretraining with Autoregressive 
 
 例如，情感分类任务可以表示为“{SENTENCE}。It's really [MASK]”。候选标签y ∈ Y也被映射为完形填空问题的答案，称为verbalizer v(y)。在情感分类中，标签“positive”和“negative”被映射为单词“good”和“bad”。给定输入x的条件下，预测标签y的概率可以表示为：
 
-![截屏2023-06-15 上午11.55.11.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258A%25E5%258D%258811.55.11.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 上午11.55.11.png)
 
 其中Y是标签集合。句子是积极还是消极的概率与在空白中预测“good”或“bad”的概率成正比。然后，使用交叉熵损失对GLM进行微调。
 
-![截屏2023-06-15 上午11.55.26.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258A%25E5%258D%258811.55.26.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 上午11.55.26.png)
 
 # 分析与比较
 
@@ -152,7 +159,7 @@ UniLM通过在自动编码框架下改变双向、单向和交叉注意力之间
 
 ### ****SuperGLUE****
 
-![截屏2023-06-15 下午2.05.55.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258B%25E5%258D%25882.05.55.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 下午2.05.55.png)
 
 `注释：可以看出GLMBase 得分比BERT Base 高 4.6%，GLMLarge 得分比BERT Large 高 5.0%。`
 
@@ -160,9 +167,9 @@ UniLM通过在自动编码框架下改变双向、单向和交叉注意力之间
 
 ### Sequence-to-Sequence
 
-![截屏2023-06-15 下午2.10.59.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258B%25E5%258D%25882.10.59.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 下午2.10.59.png)
 
-![截屏2023-06-15 下午2.12.02.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258B%25E5%258D%25882.12.02.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 下午2.12.02.png)
 
 在上面表格中展示了在更大语料库上训练的模型的结果。GLMRoBERTa可以达到与序列到序列BART模型相媲美的性能，并且优于T5和UniLMv2模型。
 
@@ -170,13 +177,13 @@ UniLM通过在自动编码框架下改变双向、单向和交叉注意力之间
 
 ### 文字填充
 
-![截屏2023-06-15 下午2.15.39.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258B%25E5%258D%25882.15.39.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 下午2.15.39.png)
 
 GLM 大大优于以前的方法，1.3 到 3.9 BLEU。在此数据集上取得了最优秀的结果。
 
 ### 消融实验
 
-![截屏2023-06-15 下午2.18.29.png](%E3%80%90%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB%E3%80%91GLM%EF%BC%9AGeneral%20Language%20Model%20Pretraining%20with%20%20e35108f8708246f0902bb479479b6ca4/%25E6%2588%25AA%25E5%25B1%258F2023-06-15_%25E4%25B8%258B%25E5%258D%25882.18.29.png)
+![](./【论文导读】GLM：General Language Model Pretraining/截屏2023-06-15 下午2.18.29.png)
 
 > 作者进行了一系列的消融实验以评估GLM模型的不同组成部分对性能的影响
 > 
