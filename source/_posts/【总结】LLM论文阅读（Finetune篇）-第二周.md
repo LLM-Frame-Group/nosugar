@@ -1,5 +1,5 @@
 ---
-title: 【总结】LLM论文阅读-第二周
+title: 【总结】LLM论文阅读（Finetune篇）-第二周
 date: 2023-06-13 8:39:58
 tags: 论文阅读
 mathjax: true
@@ -11,7 +11,7 @@ author: Azyka,洛洛洛
 
 # Fine Tuning
 
-![Finetune描述](./【总结】LLM论文阅读-第二周/Untitled.png)
+![Finetune描述](./【总结】LLM论文阅读（Finetune篇）-第二周/Untitled.png)
 
 默认情况下对模型所有参数进行调整
 
@@ -48,7 +48,7 @@ author: Azyka,洛洛洛
 
 每个任务唯一对应一套prefix，不支持多任务。
 
-![Prefix-tuning结构](./【总结】LLM论文阅读-第二周/1.png)
+![Prefix-tuning结构](./【总结】LLM论文阅读（Finetune篇）-第二周/1.png)
 
 
 
@@ -106,7 +106,7 @@ author: Azyka,洛洛洛
 
 **模型权重的更新矩阵有一个低秩**
 
-![LoRA](./【总结】LLM论文阅读-第二周/5.png)
+![LoRA](./【总结】LLM论文阅读（Finetune篇）-第二周/5.png)
 
 
 
@@ -114,7 +114,7 @@ author: Azyka,洛洛洛
 
 定义：目标函数达到精确解决优化问题所需的最小维度
 
-在2020年，一项由[Aghajanyan等人](./【总结】LLM论文阅读-第二周/https://arxiv.org/abs/2012.13255)进行的研究衡量了模型微调的本征维度，尝试寻找对每个任务进行微调时需要多少空余参数才能大概解决优化问题
+在2020年，一项由[Aghajanyan等人](./【总结】LLM论文阅读（Finetune篇）-第二周/https://arxiv.org/abs/2012.13255)进行的研究衡量了模型微调的本征维度，尝试寻找对每个任务进行微调时需要多少空余参数才能大概解决优化问题
 
 他们提出——预训练本身是在为下游NLP任务最小化本征维度，**预训练实际上是一个学习压缩平均NLP任务的框架**
 
@@ -157,7 +157,7 @@ $$
 - MRPC：包含约3700个训练样本的段落文本语义一致性预测任务
 - QQP：包含约363k个训练样本的问题文本语义一致性预测任务
 
-![本征维度计算结果](./【总结】LLM论文阅读-第二周/6.png)
+![本征维度计算结果](./【总结】LLM论文阅读（Finetune篇）-第二周/6.png)
 
 
 
@@ -166,13 +166,13 @@ $$
 - 预训练模型效果越好，本征维度越小
 - 训练集规模越大，本征维度越大
 
-![本征维度-模型规模](./【总结】LLM论文阅读-第二周/7.png)
+![本征维度-模型规模](./【总结】LLM论文阅读（Finetune篇）-第二周/7.png)
 
 
 
 ## 重新理解LoRA
 
-![LoRA结构](./【总结】LLM论文阅读-第二周/8.png)
+![LoRA结构](./【总结】LLM论文阅读（Finetune篇）-第二周/8.png)
 
 现有预训练权重矩阵 $W_0\in\mathbb{R}^{d\times k}$ ，将权重更新表示为
 
@@ -198,15 +198,15 @@ $$
 
 ## 实验效果
 
-![RoBERT对比](./【总结】LLM论文阅读-第二周/9.png)
+![RoBERT对比](./【总结】LLM论文阅读（Finetune篇）-第二周/9.png)
 
-![GPT-3对比](./【总结】LLM论文阅读-第二周/10.png)
+![GPT-3对比](./【总结】LLM论文阅读（Finetune篇）-第二周/10.png)
 
 
 
 # Chinese-LLaMA-Alpaca
 
-项目地址：[https://github.com/ymcui/Chinese-LLaMA-Alpaca](./【总结】LLM论文阅读-第二周/https://github.com/ymcui/Chinese-LLaMA-Alpaca)
+项目地址：[https://github.com/ymcui/Chinese-LLaMA-Alpaca](./【总结】LLM论文阅读（Finetune篇）-第二周/https://github.com/ymcui/Chinese-LLaMA-Alpaca)
 
 LLaMA：2023年Facebook Meta发布的最新Transformer decoder大语言模型，主要基于英文数据进行训练，采用了包括**预归一化、SwiGLU 激活函数、旋转嵌入**等一系列优化措施。
 
