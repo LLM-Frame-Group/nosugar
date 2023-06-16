@@ -75,14 +75,6 @@ excerpt: 整理了LLM微调的技术发展，着重关注了PEFT的基本原理�
 
 
 
-### 实验效果
-
-![Prompt Tuning效果对比](./【总结】LLM论文阅读-第二周/2.png)
-
-![Prompt Tuning参数对比](./【总结】LLM论文阅读-第二周/3.png)
-
-![Prompt Tuning benchmark表现](./【总结】LLM论文阅读-第二周/4.png)
-
 
 
 ---

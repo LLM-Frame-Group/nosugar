@@ -21,7 +21,7 @@ Soft Prompt：通过反向传播学习，可以被调整用于合并来自任意
 
 - **prefix tuning.** 由Li等人在2021年提出，在生成式任务中效果优秀。这一方法保留了模型参数，并通过反向传播错误，调整每个encoder层和输入层前置入的prefix激活函数。从而对不同任务的微调模型只需要保存其对应的prefix参数。
 
-  ![image-20230608152731918](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230608152731918.png)
+  ![prefix tuning示意图](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230608152731918.png)
 
 - **prompt tuning.** 保留完整预训练模型，仅允许每个下游任务有额外的k个可调整token置入于输入文本的头部。该方法prefix tuning的差别在于，他没有在中间层插入prefix或添加额外的输出层，仅仅对输入的prompt进行了调整。
 
@@ -66,12 +66,12 @@ $$
 
 每个prompt参数训练只基于单个SuperGLUE任务，不支持多任务设置。训练时，将每个任务的名称插入到输入的头部来标识样例归属。
 
-![image-20230609125519651](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230609125519651.png)
+![Prompt Tuning效果对比](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230609125519651.png)
 
 ## 方法效果比较
 
-![image-20230609120424455](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230609120424455.png)
+![Prompt Tuning benchmark表现](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230609120424455.png)
 
 ## 方法参数量比较
 
-![image-20230609120406137](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230609120406137-1686881658535-6.png)
+![Prompt Tuning参数对比](./【论文导读】The-Power-of-Scale-for-Parameter-Efficient-Prompt-Tuning/image-20230609120406137-1686881658535-6.png)
