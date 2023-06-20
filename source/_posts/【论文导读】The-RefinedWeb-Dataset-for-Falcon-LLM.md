@@ -1,7 +1,7 @@
 ---
 title: 【论文导读】The RefinedWeb Dataset for Falcon LLM
 date: 2023-06-20 10:20:33
-tags: 论文阅读,Prompt Engineering
+tags: 论文阅读
 mathjax: true
 excerpt: 主要阐述了当前（2023.6）表现最好的开源模型——Falcon的数据集构建流程
 toc: true
