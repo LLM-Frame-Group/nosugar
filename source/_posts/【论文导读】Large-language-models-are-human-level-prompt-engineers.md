@@ -8,7 +8,7 @@ toc: true
 author: Azyka
 ---
 
-# 1. 介绍
+# 介绍
 
 为了确保模型能够按照人类需求执行任务，prompt是非常有效的方式，然而构造prompt需要大量人工，本文提出了一个基于LLM生成和挑选指令的自动化算法。文中称问题为自然语言程序合成（Program Synthesis），利用LLM解决此黑盒优化问题，启发式地搜索可行解。
 
@@ -44,7 +44,7 @@ Program Synthesis本身是代码自动生成领域的一个概念，其核心问
 
 
 
-# 2. 方法
+# 方法
 
 基本定义：
 
@@ -108,7 +108,7 @@ $$
 
 
 
-# 3. APE效果分析
+# APE效果分析
 
 作者从zero-shot表现、few-shot 上下文学习表现、zero-shot思维链表现和事实认知四个层面对APE的效果进行了分析。
 
@@ -146,7 +146,7 @@ $$
 
 
 
-# 4. 开源项目
+# 开源项目
 
 > https://github.com/keirp/automatic_prompt_engineer
 

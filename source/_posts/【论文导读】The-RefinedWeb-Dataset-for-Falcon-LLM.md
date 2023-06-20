@@ -8,7 +8,7 @@ toc: true
 author: Azyka
 ---
 
-# 1. 介绍
+# 介绍
 
 为了最大程度在规模扩张时提高模型性能，根据Chinchilla scaling law缩放定律（2022年由Deepmind提出），模型大小和数据集大小应该同时增加。而早期的KM scaling law，则认为应该首先关注模型大小，减少数据集的增大。
 
@@ -36,7 +36,7 @@ scaling law：以模型大小、数据规模和总计算量作为决定模型性
 
 
 
-# 2. 数据集构建
+# 数据集构建
 
 文中提出了MDR（MacroData Refinement），这是一个用于大规模过滤和消除CommonCrawl中web数据重复的管道。
 

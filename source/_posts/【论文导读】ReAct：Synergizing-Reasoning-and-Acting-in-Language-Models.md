@@ -8,7 +8,7 @@ toc: true
 author: Azyka
 ---
 
-# 1. 介绍
+# 介绍
 
 **ReAct：结合reasoning和acting。Reasoning允许模型进行模型归纳、跟踪和更新行动计划，甚至处理异常。Acting允许模型与外部资源（例如知识库或环境）交互并从中收集信息。**
 
@@ -25,7 +25,7 @@ author: Azyka
 
 
 
-# 2. 原理
+# 原理
 
 考虑agent与环境交互以解决任务的一般设置。在时间阶段 $t$，agent从环境收到一个观察值 $o_t ∈ O$，基于策略 $\pi(a_t|c_t)$ 执行动作 $a_t\in A$，其中 $c_t = (o_1, a_1, · · · , o_{t−1}, a_{t−1}, o_t)$ 是agent的上下文。学习这样一个条件策略是非常困难的，如下图所示，常规方法无法解决需要对轨迹上下文进行复杂推理的QA任务（找出Apple remote的另一种控制设备）。
 
@@ -43,7 +43,7 @@ ReAct的想法很简单：将agent的动作空间扩大 $\widehat{A}=A\cup L$，
 
 
 
-# 3. 知识密集型推理任务
+# 知识密集型推理任务
 
 通过与维基百科 API 交互，ReAct 能够检索信息以支持推理，同时还使用推理来确定接下来要检索的内容，展示了推理和行动的协同作用。实验使用2个数据集——HotPotQA、FEVER。
 
@@ -78,7 +78,7 @@ ReAct的想法很简单：将agent的动作空间扩大 $\widehat{A}=A\cup L$，
 
 ![实验结果](./【论文导读】ReAct：Synergizing-Reasoning-and-Acting-in-Language-Models/image-20230620002417751.png)
 
-# 4. 决策型任务
+# 决策型任务
 
 在ALFWorld和WebShop这两个基于语言的交互式决策任务上测试了ReAct，两个任务都具有复杂的环境，代理需要在长期动作中以稀疏的奖励激励行动，强调推理来进行高效探索。
 
@@ -103,7 +103,7 @@ ReAct的想法很简单：将agent的动作空间扩大 $\widehat{A}=A\cup L$，
 
 
 
-# 5. LangChain ReAct
+# LangChain ReAct
 
 LangChain中集成实现了ReAct框架，可以直接使用ReAct来建立agent执行任务，结合LLM和其他工具。[官方文档](https://python.langchain.com/docs/modules/agents/agent_types/react_docstore)
 

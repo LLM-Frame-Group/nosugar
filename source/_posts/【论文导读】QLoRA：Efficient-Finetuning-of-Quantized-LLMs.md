@@ -8,7 +8,7 @@ toc: true
 author: John_zyj
 ---
 
-# 1. 背景
+# 背景
 
 ​		我们知道，大语言模型可以通过大规模的无监督预训练来学习丰富的语言知识，并通过微调来适应不同的下游任务，从而在各种NLP任务上取得了令人瞩目的性能。但是，LLM也带来了一些挑战，其中一个便是它们的巨大规模和高昂的计算成本。例如，**对650亿参数的LLaMA模型进行16位微调需要超过780GB的GPU内存**，这远远超出了普通用户和研究者拥有的资源。虽然最近的量化方法可以减少LLM的内存占用量，但是这些技术仅适用于推理，并不适合在训练过程中使用。
 
@@ -16,7 +16,7 @@ author: John_zyj
 
 
 
-# 2. 基本原理
+# 基本原理
 
 ![QLoRA](./【论文导读】QLoRA：Efficient-Finetuning-of-Quantized-LLMs/QLoRA.png)
 
@@ -48,7 +48,7 @@ $$
 
 
 
-# 3. 实验结果
+# 实验结果
 
 ![result](./【论文导读】QLoRA：Efficient-Finetuning-of-Quantized-LLMs/result.png)
 
