@@ -1,6 +1,6 @@
 ---
 title: 【论文导读】Lora：Low-rank adaptation of large language models
-date: 2023-06-16 10:02:12
+date: 2023-06-06 10:02:12
 tags: 论文阅读
 mathjax: true
 excerpt: 解读了LoRA设计结构及其理论支撑

@@ -1,6 +1,6 @@
 ---
 title: 【论文导读】The Power of Scale for Parameter-Efficient Prompt Tuning
-date: 2023-06-16 10:12:42
+date: 2023-06-06 10:12:42
 tags: 论文阅读
 mathjax: true
 excerpt: 简单介绍了soft prompt的概念，并解读了Prompt Tuning的设计方法

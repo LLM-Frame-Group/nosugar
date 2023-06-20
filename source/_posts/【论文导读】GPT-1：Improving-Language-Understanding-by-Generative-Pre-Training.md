@@ -1,6 +1,6 @@
 ---
 title: 【论文导读】GPT-1：Improving Language Understanding by Generative Pre-Training
-date: 2023-06-16 09:52:59
+date: 2023-06-06 09:52:59
 tags: 论文阅读
 mathjax: true
 excerpt: 总结了GPT-1的基本设计思路
