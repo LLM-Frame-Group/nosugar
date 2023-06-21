@@ -150,60 +150,20 @@ $$
 
 > https://github.com/keirp/automatic_prompt_engineer
 
-文中作者对项目进行了开源。
+这篇论文团队提供了开源代码，在里面可以翻到每条指令评分的实现方法。
 
-整体流程都与论文中描述的一致，我好奇的地方在于评分函数的实现
+整体流程都与论文中描述的一致，我好奇的地方在于评分函数的实现：
 
-实际上，评分函数之类内容实现的方式就是把输入输出套个模板丢进OpenAI提供的text-davinci-002接口，返回评分进行分析。
-
-```python
-def __log_probs(self, text, log_prob_range=None):
-    """Returns the log probs of the text."""
-    if not isinstance(text, list):
-        text = [text]
-    if log_prob_range is not None:
-        for i in range(len(text)):
-            lower_index, upper_index = log_prob_range[i]
-            assert lower_index < upper_index
-            assert lower_index >= 0
-            assert upper_index - 1 < len(text[i])
-    config = self.config['gpt_config'].copy()
-    config['logprobs'] = 1
-    config['echo'] = True
-    config['max_tokens'] = 0
-    if isinstance(text, list):
-        text = [f'\n{text[i]}' for i in range(len(text))]
-    else:
-        text = f'\n{text}'
-    response = None
-    while response is None:
-        try:
-            response = openai.Completion.create(
-                **config, prompt=text)
-        except Exception as e:
-            print(e)
-            print('Retrying...')
-            time.sleep(5)
-    log_probs = [response['choices'][i]['logprobs']['token_logprobs'][1:]
-                    for i in range(len(response['choices']))]
-    tokens = [response['choices'][i]['logprobs']['tokens'][1:]
-                for i in range(len(response['choices']))]
-    offsets = [response['choices'][i]['logprobs']['text_offset'][1:]
-                for i in range(len(response['choices']))]
-
-    # Subtract 1 from the offsets to account for the newline
-    for i in range(len(offsets)):
-        offsets[i] = [offset - 1 for offset in offsets[i]]
-
-    if log_prob_range is not None:
-        # First, we need to find the indices of the tokens in the log probs
-        # that correspond to the tokens in the log_prob_range
-        for i in range(len(log_probs)):
-            lower_index, upper_index = self.get_token_indices(
-                offsets[i], log_prob_range[i])
-            log_probs[i] = log_probs[i][lower_index:upper_index]
-            tokens[i] = tokens[i][lower_index:upper_index]
-
-    return log_probs, tokens
+```
+while response is None:
+    try:
+        response = openai.Completion.create(
+            **config, prompt=text)
+    except Exception as e:
+        print(e)
+        print('Retrying...')
+        time.sleep(5)
+log_probs = [response['choices'][i]['logprobs']['token_logprobs'][1:]
 ```
 
+可以看到，指令评分实现的核心就是把输入输出套个模板丢进OpenAI提供的text-davinci-002接口，模型返回评分进行分析。而0-1损失函数实际上反而是在这个更soft的评价方法上建立的，即取一个阈值，达到则为好，反之为不好。
