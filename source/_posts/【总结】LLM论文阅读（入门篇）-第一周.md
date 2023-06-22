@@ -1,4 +1,12 @@
-# week1 outline
+---
+title: 【总结】LLM论文阅读（入门篇）-第一周
+date: 2023-06-07 11:04:15
+tags: 论文阅读
+mathjax: true
+excerpt: 从基础开始认识什么是LLM。本文主要介绍LLM用到的基本技术和GPT系列的发展历程，并解答了LLM为什么会突然爆火的原因——Emergent Ability
+toc: true
+author: Azyka,洛洛洛,John_zyj
+---
 
 # 深度学习和**Transformer**
 
@@ -17,7 +25,7 @@ RNN和LSTM都是通过递归的方式处理序列，即当前的隐藏状态是�
 ### **Self-Attention Mechanism**
 
 > 为每个元素分配一个权重，这个权重反映了其他元素对当前元素的重要性。
-> 
+
 - 使用权重矩阵对每个元素生成query和key
 - 对单个元素，算出该元素的query和其他元素的key的点积，运用softmax函数算出注意力分数
 - 对注意力分数进行加权求和
@@ -25,24 +33,23 @@ RNN和LSTM都是通过递归的方式处理序列，即当前的隐藏状态是�
 ### Multi-Head Self-Attention
 
 > 通过多个“头”进行处理，每个“头”都有自己的权重矩阵。然后，将所有头的输出拼接，通过线性变换产生最终的输出。
-> 
+
 - 对于每个头，使用不同的权重矩阵对每个元素生成query和key
 - 对单个元素，在每个头下，算出该元素的query和其他元素的key的点积，运用softmax函数算出注意力分数
 - 将所有头的输出拼接在一起，对拼接的输出进行线性变换，得到最终的输出。
 
 > 在自然语言处理任务中，一个头可能专注于捕捉句法依赖，另一个头可能专注于捕捉语义依赖。这种机制使模型能够更好地理解和生成复杂的文本。
-> 
 
 ### Encoder
 
 > Encoder将输入转换为“上下文向量”
-> 
+
 - Encoder由六层identical layers组成，每一层都由多头自注意力机制和前馈神经网络组成。
 
 ### Decoder
 
 > Decoder接收编码器产生的上下文向量，将其转换为目标输出
-> 
+
 - Decoder同样由六层identical layers组成，但每一层都在encoder的layer中针对encoder的输出添加了一个注意力机制。
 - 这个额外的注意力机制使得decoder在生成每个输出词的时候，能够关注到输入的所有部分
 
@@ -76,15 +83,15 @@ Transformer中的每个元素的表示都由整个序列中的所有元素共同
 
 ## GPT发展
 
-| 模型名称 | 训练方法 | 特点 | 论文 |
-| --- | --- | --- | --- |
-| GPT-1 | 语言建模（预训练+微调） | 建立了GPT系列的核心架构；确定了使用上文预测下一单词的基本原则 | Improving Language Understanding Generative Pre-Training |
-| GPT-2 | 语言建模，扩大模型参数到1.5B | 多任务语言模型 | Language Models are Unsupervised Multitask Learners |
-| GPT-3 | 语言建模，扩大模型参数到175B | 提示补全，上下文学习，Few-shot Learning | Language Models are Few-Shot Learners |
-| Instruct-GPT | 有监督微调，RLHF | 指令回答，Zero-shot Learning | Training language models to follow instructions with human feedback |
-| Codex | 使用代码+文本训练 | 代码生成、chain-of-thought (CoT) | Evaluating Large Language Models Trained on Code |
-| ChatGPT | 使用对话数据进行强化学习指令微调 | 对话历史建模 |  |
-| GPT-4 | 使用多模态数据 | 更强的性能、接受图像输入 | GPT-4 Technical Report |
+| 模型名称     | 训练方法                         | 特点                                                         | 论文                                                         |
+| ------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| GPT-1        | 语言建模（预训练+微调）          | 建立了GPT系列的核心架构；确定了使用上文预测下一单词的基本原则 | Improving Language Understanding Generative Pre-Training     |
+| GPT-2        | 语言建模，扩大模型参数到1.5B     | 多任务语言模型                                               | Language Models are Unsupervised Multitask Learners          |
+| GPT-3        | 语言建模，扩大模型参数到175B     | 提示补全，上下文学习，Few-shot Learning                      | Language Models are Few-Shot Learners                        |
+| Instruct-GPT | 有监督微调，RLHF                 | 指令回答，Zero-shot Learning                                 | Training language models to follow instructions with human feedback |
+| Codex        | 使用代码+文本训练                | 代码生成、chain-of-thought (CoT)                             | Evaluating Large Language Models Trained on Code             |
+| ChatGPT      | 使用对话数据进行强化学习指令微调 | 对话历史建模                                                 |                                                              |
+| GPT-4        | 使用多模态数据                   | 更强的性能、接受图像输入                                     | GPT-4 Technical Report                                       |
 
 提示(prompt)补全：根据输入的提示词，补全提示词的句子。
 
@@ -128,11 +135,11 @@ GPT-3在2020年出现，但直到2022年LLM才进入大众视野。从实际性�
 
 然而在2022年，Chain of Thought(CoT)和instruction tuning的出现打破了比例定律，使得LLM在规模有限的情况下出现了性能上的飞跃。
 
-![Untitled](week1%20outline%20bc9e557bd36a43e9826fb4c577a39cf5/Untitled.png)
+![Scaling Law](./【总结】LLM论文阅读（入门篇）-第一周/Untitled.png)
 
 instruction tuning：使用指令数据集（包含指令形式的任务描述、输入输出对、几组示例）对模型进行fine-tune。而RLHF对应的微调被称为alignment tuning
 
-![Untitled](week1%20outline%20bc9e557bd36a43e9826fb4c577a39cf5/Untitled%201.png)
+![指令数据集](./【总结】LLM论文阅读（入门篇）-第一周/Untitled 1.png)
 
 ## Emergent Ability
 
@@ -154,11 +161,11 @@ instruction tuning：使用指令数据集（包含指令形式的任务描述�
 
 不过对较小的模型，指令微调仍然可以能提高模型的性能。
 
-![Untitled](week1%20outline%20bc9e557bd36a43e9826fb4c577a39cf5/Untitled%202.png)
+![指令微调和CoT效果](./【总结】LLM论文阅读（入门篇）-第一周/Untitled 2.png)
 
 同时，指令微调可以显著改善模型的使用体验。
 
-![Untitled](week1%20outline%20bc9e557bd36a43e9826fb4c577a39cf5/Untitled%203.png)
+![人工评分](./【总结】LLM论文阅读（入门篇）-第一周/Untitled 3.png)
 
 根据测试人员对模型在真实问题（从LLM API中收集）下回答的评价，强化学习（PPO）和监督微调（SFT）后的模型回答质量显著高于微调前。
 
@@ -196,14 +203,14 @@ Let's think step by step. 把木棒锯成5段，需要4次。锯一次2分钟，
 
 **Auto-CoT**
 
-![Untitled](week1%20outline%20bc9e557bd36a43e9826fb4c577a39cf5/Untitled%204.png)
+![Auto-CoT](./【总结】LLM论文阅读（入门篇）-第一周/Untitled 4.png)
 
 1. 聚类选取有代表性的问题
 2. 对于每一个采样的问题拼接上“Let's think step by step”（类似于 Zero-Shot-CoT ）输入到语言模型，让语言模型生成中间推理步骤和答案，然后把这些所有采样的问题以及语言模型生成的中间推理步骤和答案全部拼接在一起，构成少样本学习的样例，最后再拼接上需要求解的问题一起输入到语言模型
 
 这种方法显著提高了LLM解决问题的能力。根据实验分析，当模型规模大于62B时，CoT才比直接回答问题存在优势。如果模型规模较小，CoT反而会导致性能降低。（根据模型和任务的不同，这个临界值有差异）
 
-![Untitled](week1%20outline%20bc9e557bd36a43e9826fb4c577a39cf5/Untitled%205.png)
+![指令微调和CoT效果](./【总结】LLM论文阅读（入门篇）-第一周/Untitled 5.png)
 
 CoT能力来源分析
 
@@ -221,7 +228,7 @@ CoT与指令微调相关
 
 其他涌现能力（2022/8）
 
-![Untitled](week1%20outline%20bc9e557bd36a43e9826fb4c577a39cf5/Untitled%206.png)
+![Emergent Ability](./【总结】LLM论文阅读（入门篇）-第一周/Untitled 6.png)
 
 - **Few-Shot Prompted Tasks.** 在模型达到一定规模后，能通过few-shot prompting策略在benchmark上取得突破性的准确率增长
 - **Augmented Prompting Strategies.** 能够增强LLM的prompting技巧。如果某些技巧在模型达到一定程度才能起作用，在此之前都没有效果甚至有害，那也称其为涌现能力
@@ -239,7 +246,6 @@ CoT与指令微调相关
 为模型提供了具体的问题或要求
 
 > 通过不断优化提示来提高模型的性能。
-> 
-> 
-> 这种技术的优点是可以简单的对模型进行微调和定制，而无需重新训练整个模型。
 >
+>
+> 这种技术的优点是可以简单的对模型进行微调和定制，而无需重新训练整个模型。
